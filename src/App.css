@@ -1,0 +1,18 @@
+.app {
+    display: flex;
+}
+
+.content {
+    flex: 1;
+    padding: 20px;
+    margin-left: 250px;
+    height: 100vh;
+}
+
+@media (max-width: 768px) {
+    .content {
+        margin-left: 0;
+        height: calc(100% - 80px);
+        margin-top: 80px;
+    }
+}
