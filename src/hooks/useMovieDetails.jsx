@@ -24,7 +24,7 @@ const useMovieDetails = (movieId) => {
                         setLoading(false);
                     } else {
                         const response = await axios.get(
-                            `http://www.omdbapi.com/?apikey=${
+                            `https://www.omdbapi.com/?apikey=${
                                 import.meta.env.VITE_API_KEY
                             }&i=${movieId}`
                         );
@@ -38,7 +38,7 @@ const useMovieDetails = (movieId) => {
                     }
                 } else {
                     const response = await axios.get(
-                        `http://www.omdbapi.com/?apikey=${
+                        `https://www.omdbapi.com/?apikey=${
                             import.meta.env.VITE_API_KEY
                         }&i=${movieId}`
                     );

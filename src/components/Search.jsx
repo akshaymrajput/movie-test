@@ -18,7 +18,7 @@ const Search = () => {
         try {
             setLoading(true);
             const response = await axios.get(
-                `http://www.omdbapi.com/?apikey=${
+                `https://www.omdbapi.com/?apikey=${
                     import.meta.env.VITE_API_KEY
                 }&s=${query}`
             );
