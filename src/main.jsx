@@ -6,6 +6,7 @@ import "./index.css";
 import Home from "./pages/Home.jsx";
 import Watchlist from "./pages/Watchlist.jsx";
 import MovieDetails from "./pages/MovieDetails.jsx";
+import { GlobalProvider } from "./contexts/GlobalContext.jsx";
 
 const router = createBrowserRouter([
     {
@@ -29,6 +30,8 @@ const router = createBrowserRouter([
 
 ReactDOM.createRoot(document.getElementById("root")).render(
     <React.StrictMode>
-        <RouterProvider router={router} />
+        <GlobalProvider>
+            <RouterProvider router={router} />
+        </GlobalProvider>
     </React.StrictMode>
 );

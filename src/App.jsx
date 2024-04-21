@@ -1,33 +1,27 @@
-import React from "react";
+import React, { useContext } from "react";
 import Login from "./pages/Login";
 import Sidebar from "./components/Sidebar";
 import { Outlet } from "react-router-dom";
 import "./App.css";
-import GlobalContext, { GlobalProvider } from "./contexts/GlobalContext";
+import GlobalContext from "./contexts/GlobalContext";
 
-function App() {
+const App = () => {
+    const { loggedIn } = useContext(GlobalContext);
+
     return (
-        <GlobalProvider>
-            <div className="app">
-                <GlobalContext.Consumer>
-                    {({ loggedIn }) => (
-                        <>
-                            {loggedIn ? (
-                                <>
-                                    <Sidebar />
-                                    <div className="content">
-                                        <Outlet />
-                                    </div>
-                                </>
-                            ) : (
-                                <Login />
-                            )}
-                        </>
-                    )}
-                </GlobalContext.Consumer>
-            </div>
-        </GlobalProvider>
+        <div className="app">
+            {loggedIn ? (
+                <>
+                    <Sidebar />
+                    <div className="content">
+                        <Outlet />
+                    </div>
+                </>
+            ) : (
+                <Login />
+            )}
+        </div>
     );
-}
+};
 
 export default App;

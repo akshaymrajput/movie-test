@@ -16,7 +16,6 @@ const initialState = {
     emailError: "",
     signupList: JSON.parse(localStorage.getItem("signupList")) || [],
     watchlists: JSON.parse(localStorage.getItem("watchlists")) || {},
-    isLoggedIn: false,
 };
 
 const validateEmail = (input) => {
@@ -38,7 +37,6 @@ const reducer = (state, action) => {
                         loggedIn: true,
                         userId: existingUser.userId,
                         email: action.payload.email,
-                        isLoggedIn: true,
                         emailError: "",
                     };
                 } else {
@@ -69,7 +67,6 @@ const reducer = (state, action) => {
                         loggedIn: true,
                         userId: newUser.userId,
                         email: action.payload.email,
-                        isLoggedIn: true,
                         emailError: "",
                         signupList: [...state.signupList, newUser],
                         watchlists: {
@@ -99,7 +96,6 @@ const reducer = (state, action) => {
                 loggedIn: false,
                 userId: "",
                 email: "",
-                isLoggedIn: false,
             };
 
         case ActionTypes.SET_SIGNUP_LIST:
@@ -178,15 +174,8 @@ export const GlobalProvider = ({ children }) => {
         localStorage.setItem("watchlists", JSON.stringify(state.watchlists));
     }, [state.watchlists]);
 
-    const {
-        loggedIn,
-        userId,
-        email,
-        emailError,
-        signupList,
-        watchlists,
-        isLoggedIn,
-    } = state;
+    const { loggedIn, userId, email, emailError, signupList, watchlists } =
+        state;
 
     return (
         <GlobalContext.Provider
@@ -197,7 +186,6 @@ export const GlobalProvider = ({ children }) => {
                 emailError,
                 signupList,
                 watchlists: watchlists[userId] || null,
-                isLoggedIn,
                 dispatch,
             }}
         >
