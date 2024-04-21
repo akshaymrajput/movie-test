@@ -48,8 +48,6 @@ const MovieDetails = () => {
         }
     };
 
-    console.log("movieDetails", movieDetails);
-
     const renderRatingScore = (rating) => {
         if (rating?.Source === "Rotten Tomatoes") {
             return (

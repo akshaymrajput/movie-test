@@ -9,8 +9,6 @@ const SearchResult = ({ movies }) => {
     const isMovieInWatchlist = (movieId) => {
         const userWatchlists = watchlists || [];
 
-        console.log("userWatchlists", userWatchlists);
-
         return userWatchlists?.some((movie) => movie.imdbID === movieId);
     };
 

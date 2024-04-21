@@ -13,14 +13,6 @@
     transition: opacity 0.3s ease;
 }
 
-.notification.show {
-    opacity: 1;
-}
-
-.notification.hide {
-    opacity: 0;
-}
-
 @media screen and (max-width: 600px) {
     .notification {
         top: 60px;

@@ -17,13 +17,8 @@ const MovieCard = ({ movie }) => {
 
     const movieObj = movie;
 
-    console.log(movieObj);
-
     const isInWatchlist =
         watchlists && watchlists.some((item) => item.imdbID === movie.imdbID);
-
-    console.log("watchlists", watchlists);
-    console.log("isInWatchlist", isInWatchlist);
 
     const handleAddToWatchlist = () => {
         if (!isInWatchlist) {

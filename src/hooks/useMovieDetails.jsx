@@ -12,30 +12,16 @@ const useMovieDetails = (movieId) => {
                 setLoading(true);
                 setError(null);
 
-                const cachedMovies = localStorage.getItem("movies");
+                let cachedMovies = localStorage.getItem("movies");
+                cachedMovies = cachedMovies ? JSON.parse(cachedMovies) : [];
 
-                if (cachedMovies) {
-                    const movies = JSON.parse(cachedMovies);
-                    const movie = movies.find(
-                        (movie) => movie.imdbID === movieId
-                    );
-                    if (movie) {
-                        setMovieDetails(movie);
-                        setLoading(false);
-                    } else {
-                        const response = await axios.get(
-                            `https://www.omdbapi.com/?apikey=${
-                                import.meta.env.VITE_API_KEY
-                            }&i=${movieId}`
-                        );
-                        const movieData = response.data;
-                        setMovieDetails(movieData);
-                        localStorage.setItem(
-                            "movies",
-                            JSON.stringify([...movies, movieData])
-                        );
-                        setLoading(false);
-                    }
+                const cachedMovie = cachedMovies.find(
+                    (movie) => movie.imdbID === movieId
+                );
+
+                if (cachedMovie) {
+                    setMovieDetails(cachedMovie);
+                    setLoading(false);
                 } else {
                     const response = await axios.get(
                         `https://www.omdbapi.com/?apikey=${
@@ -44,7 +30,10 @@ const useMovieDetails = (movieId) => {
                     );
                     const movieData = response.data;
                     setMovieDetails(movieData);
-                    localStorage.setItem("movies", JSON.stringify([movieData]));
+                    localStorage.setItem(
+                        "movies",
+                        JSON.stringify([...cachedMovies, movieData])
+                    );
                     setLoading(false);
                 }
             } catch (error) {

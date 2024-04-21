@@ -22,7 +22,6 @@ const Search = () => {
                     import.meta.env.VITE_API_KEY
                 }&s=${query}`
             );
-            console.log(response.data.Search);
             setLoading(false);
             setResults(response.data.Search);
         } catch (error) {
@@ -33,6 +32,7 @@ const Search = () => {
 
     const handleSubmit = (e) => {
         e.preventDefault();
+        handleSearch();
     };
 
     return (

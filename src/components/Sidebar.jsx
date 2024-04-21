@@ -4,7 +4,6 @@ import {
     BiSolidHome,
     BiDotsHorizontalRounded,
     BiSolidBookmarkHeart,
-    BiSearch,
 } from "react-icons/bi";
 import "./Sidebar.css";
 import { NavLink } from "react-router-dom";
